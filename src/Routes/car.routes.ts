@@ -10,9 +10,7 @@ routes.get(
   (req, res, next) => new CarsController(req, res, next).findCarById(),
 );
 routes.get('/cars', (req, res, next) => new CarsController(req, res, next).listAllCars());
-
 routes.post('/cars', (req, res, next) => new CarsController(req, res, next).createCar());
-
 routes.put(
   '/cars/:id', 
   validateMongoId,
