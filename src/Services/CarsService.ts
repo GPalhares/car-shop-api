@@ -21,6 +21,15 @@ class CarsService {
     const car = await carsModel.findById(carId);
     return car;
   }
+
+  public async updateCarById(id: string, car: ICar): Promise<ICar | null> {
+    const carsModel = new CarsModel();
+    const updatedCar = await carsModel.update(id, car);
+    if (!updatedCar) {
+      return null;
+    }
+    return updatedCar;
+  }
 }
 
 export default CarsService;

@@ -13,4 +13,10 @@ routes.get('/cars', (req, res, next) => new CarsController(req, res, next).listA
 
 routes.post('/cars', (req, res, next) => new CarsController(req, res, next).createCar());
 
+routes.put(
+  '/cars/:id', 
+  validateMongoId,
+  (req, res, next) => new CarsController(req, res, next).updateCarById(),
+);
+
 export default routes;

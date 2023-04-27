@@ -43,6 +43,24 @@ class CarsController {
     }
     return this.res.status(200).json(car);
   }
+
+  public async updateCarById() {
+    const carId = this.req.params.id;
+    const car: ICar = {
+      model: this.req.body.model,
+      year: this.req.body.year,
+      color: this.req.body.color,
+      status: this.req.body.status,
+      buyValue: this.req.body.buyValue,
+      doorsQty: this.req.body.doorsQty,
+      seatsQty: this.req.body.seatsQty,
+    };
+    const updatedCar = await this.service.updateCarById(carId, car);
+    if (!updatedCar) {
+      return this.res.status(404).json({ message: 'Car not found' });
+    }
+    return this.res.status(200).json(updatedCar);
+  }
 }
 
 export default CarsController;

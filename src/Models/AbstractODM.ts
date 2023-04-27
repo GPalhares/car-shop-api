@@ -1,5 +1,5 @@
 import { Model, Schema, models,
-  model } from 'mongoose';
+  model, UpdateQuery } from 'mongoose';
   
 abstract class AbstractODM<T> {
   protected model: Model<T>;
@@ -24,6 +24,15 @@ abstract class AbstractODM<T> {
   public async findById(id: string): Promise<T | null> {
     const object = await this.model.findById({ _id: id });
     return object;
+  }
+
+  public async update(id: string, obj: Partial<T>):
+  Promise<T | null> {    
+    return this.model.findByIdAndUpdate(
+      { _id: id },
+      { ...obj } as UpdateQuery<T>,
+      { new: true },
+    );   
   }
 }
   
