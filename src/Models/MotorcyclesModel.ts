@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 import IMotorcycles from '../Interfaces/IMotorcycle';
 import AbstractODM from './AbstractODM';
 
-class CarsModel extends AbstractODM<IMotorcycles> {
+class MotorcycleModel extends AbstractODM<IMotorcycles> {
   constructor() {
     const schema = new Schema<IMotorcycles>({
       id: {
@@ -18,8 +18,8 @@ class CarsModel extends AbstractODM<IMotorcycles> {
       engineCapacity: { type: Number, required: true },
     }, { versionKey: false });
 
-    super(schema, 'cars');
+    super(schema, 'motorcycles');
   }
 }
 
-export default CarsModel;
+export default MotorcycleModel;

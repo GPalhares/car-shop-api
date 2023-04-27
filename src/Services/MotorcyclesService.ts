@@ -16,15 +16,18 @@ class MotorcyclesService {
     return allMotorcycle;
   }
 
-  async findMotorcycleById(carId: string) {
+  async findMotorcycleById(motorcycleID: string) {
     const motorcyclesModel = new MotorcyclesModel();
-    const car = await motorcyclesModel.findById(carId);
-    return car;
+    const motorcycle = await motorcyclesModel.findById(motorcycleID);
+    return motorcycle;
   }
 
-  public async updateMotorcycleById(id: string, car: IMotorcycles): Promise<IMotorcycles | null> {
+  public async updateMotorcycleById(
+    id: string,
+    motorcycle: IMotorcycles,
+  ): Promise<IMotorcycles | null> {
     const motorcyclesModel = new MotorcyclesModel();
-    const updatedMotorcycle = await motorcyclesModel.update(id, car);
+    const updatedMotorcycle = await motorcyclesModel.update(id, motorcycle);
     if (!updatedMotorcycle) {
       return null;
     }
